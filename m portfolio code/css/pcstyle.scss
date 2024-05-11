@@ -1,0 +1,728 @@
+@charset "UTF-8";
+
+/* ==============================
+	変数
+===============================*/
+// カラー
+$charBlack: #333;
+$charGray: #777;
+$charCase: #ccc;
+$decoBg: #eee;
+$accent: #ff0000;
+
+// PC フォントサイズ
+$pcSectionTitle: 2.5rem;
+$pcSectionTitleSub: 0.7rem;
+$pcBlockTitle: clamp(24px, 1rem, 1.8rem);
+$pcArticleText: clamp(18px, 0.65rem, 0.7rem);
+
+// TB フォントサイズ
+$tbSectionTitle: 2.5rem;
+$tbSectionTitleSub: 0.7rem;
+$tbBlockTitle: clamp(24px, 1rem, 1.8rem);
+$tbArticleText: clamp(18px, 0.65rem, 0.7rem);
+
+@media screen and (min-width: 768px) {
+  /* ==============================
+	basic
+===============================*/
+  body {
+    font-size: $pcArticleText;
+  }
+
+  .container {
+    // max-width: 1440px;
+    // margin: 0 auto;
+  }
+
+  /* ==============================
+	common
+===============================*/
+  //セクションタイトル
+  .section-title-wrapper {
+    padding-bottom: 1rem;
+
+    & .section-title {
+      & .section-title-desc {
+        font-size: $pcSectionTitleSub;
+      }
+      & .title {
+        font-size: $pcSectionTitle;
+        line-height: 3rem;
+      }
+
+      &.left-aligned {
+        margin-left: 1.5rem;
+      }
+
+      &.right-aligned {
+        margin-right: 1.5rem;
+      }
+    }
+
+    & .bg-rectangle {
+      width: 60%;
+      height: 5rem;
+    }
+  }
+
+  // ブロックタイトル
+  .block-title {
+    font-size: $pcBlockTitle;
+    line-height: 2rem;
+    margin: 3rem 0;
+  }
+
+  // 飾りボックス
+  .box-upperright,
+  .box-lowerleft {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  // br-none
+  .br-none {
+    display: none;
+  }
+
+  // 
+  .table-contents {
+    padding: 30px 8rem;
+    margin-bottom: 2rem;
+    
+    & .table {
+    }
+  }
+
+  /* ==============================
+	section1  main visual
+===============================*/
+  .main-visual {
+    & .first-view {
+      // clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+    }
+
+    & .header {
+      & .site-title {
+        & .logo {
+          width: 100px;
+        }
+        & .site-title-desc {
+          font-size: 22px;
+        }
+      }
+    }
+
+    & .main-name {
+      margin: 2rem 10px;
+      & .name-desc {
+      }
+    }
+
+    & .main-pic {
+      transform: translateY(-8rem);
+      position: relative;
+      z-index: -5;
+      width: 75%;
+      margin-bottom: 0;
+    }
+  }
+
+  /* ==============================
+	section2  school
+===============================*/
+  .school {
+    margin-bottom: 5rem;
+
+    & .logo-box {
+      width: 15%;
+      & img {
+      }
+    }
+
+    & .school-name-wrapper {
+      & .school-desc {
+      }
+      & .school-name {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  /* ==============================
+	section3  ideal life
+===============================*/
+  .ideal-life {
+    & .ideal-block {
+      & .ideal-wrapper {
+        height: 38rem;
+
+        & .bg-rectangle {
+          width: 80%;
+          height: 23rem;
+          top: 10rem;
+        }
+
+        & .bg-rectangle2 {
+          width: 80%;
+          height: 24rem;
+          top: 8rem;
+          left: 0;
+        }
+
+        .ideal {
+          flex-direction: row;
+          justify-content: flex-start;
+
+          & .ideal-img {
+            margin-right: 0;
+            margin-left: 0;
+          }
+          & .ideal-desc {
+            font-size: $pcArticleText;
+            line-height: 1.4rem;
+            display: block;
+          }
+
+          &.ideal-position1,
+          &.ideal-position3,
+          &.ideal-position5 {
+            & .ideal-img {
+            }
+            & .ideal-desc {
+              margin-left: 0;
+              margin-right: 0;
+            }
+          }
+
+          &.ideal-position2,
+          &.ideal-position4,
+          &.ideal-position6 {
+            flex-direction: row-reverse;
+
+            & .ideal-img {
+              margin-left: 0;
+            }
+            & .ideal-desc {
+              margin-left: 0;
+              padding-left: 20px;
+            }
+          }
+
+          // 個別の大きさ
+          &.ideal-position1,
+          &.ideal-position4 {
+            .ideal-img {
+              width: 65%;
+            }
+          }
+
+          &.ideal-position2,
+          &.ideal-position5 {
+            .ideal-img {
+              width: 45%;
+            }
+          }
+
+          &.ideal-position3,
+          &.ideal-position6 {
+            .ideal-img {
+              width: 42%;
+            }
+          }
+
+          // 個別の位置調整
+          &.ideal-position1 {
+            & .ideal-desc {
+              margin: 3rem 0 0 20px;
+            }
+          }
+
+          &.ideal-position2 {
+            position: absolute;
+            top: 16rem;
+            right: 0;
+
+            & .ideal-desc {
+              margin: 4rem 20px 0 0;
+            }
+          }
+
+          &.ideal-position3 {
+            position: absolute;
+            top: 27rem;
+            left: 4rem;
+
+            & .ideal-desc {
+              margin: 6.5rem 0 0 20px;
+            }
+          }
+
+          &.ideal-position4 {
+            & .ideal-desc {
+              margin: 3rem 20px 0 0;
+            }
+          }
+
+          &.ideal-position5 {
+            position: absolute;
+            top: 16rem;
+
+            & .ideal-desc {
+              margin: 5rem 0 0 20px;
+            }
+          }
+
+          &.ideal-position6 {
+            position: absolute;
+            top: 29rem;
+            right: 2rem;
+
+            & .ideal-img {
+              margin-right: 0;
+              width: 50%;
+            }
+
+            & .ideal-desc {
+              margin: auto 20px 0 0;
+            }
+          }
+        }
+
+        &.higher {
+          height: 48rem;
+        }
+      }
+
+      & .belt {
+        font-size: $pcBlockTitle;
+        line-height: 1.5rem;
+      }
+    }
+
+    & .claim {
+      & .claim-box {
+        font-size: 3.5rem;
+        line-height: 6rem;
+        padding: 1rem 2rem;
+      }
+    }
+  }
+
+  /* ==============================
+	section4  problems
+===============================*/
+  .problems {
+    & .case-container {
+      & .section-title-wrapper {
+        margin-top: 4rem;
+
+        & .section-title {
+          & .title {
+            font-size: $pcSectionTitle;
+          }
+        }
+      }
+    }
+
+    & .title-container {
+      & .problem-title-wrapper {
+        font-size: 1.2rem;
+        padding: 1.5rem 0.6rem 2.8rem 1rem;
+        width: 65%;
+
+        & .problem-desc-wrapper {
+          margin-left: 5rem;
+          & .title-number {
+          }
+          & .problem-title {
+            line-height: 1.8rem;
+          }
+        }
+
+        &.left-side {
+          left: -50px;
+          & .title-number {
+          }
+          & .problem-title {
+          }
+        }
+        &.right-side {
+          right: -50px;
+          padding: 1.8rem 1rem 1.5rem 1rem;
+
+          & .problem-desc-wrapper {
+            margin-top: 0.5rem;
+            margin-left: 5rem;
+            & .title-number {
+              margin-bottom: 2.5rem;
+            }
+            & .problem-title {
+            }
+          }
+        }
+      }
+    }
+
+    & .ba-wrapper {
+      flex-direction: row;
+
+      & .improvement {
+        width: 45%;
+        margin: 2rem auto 4rem;
+        padding: 0;
+
+        & .ba-card {
+          & .ba-title {
+            font-size: $pcBlockTitle;
+          }
+          & .ba-img {
+            width: 8rem;
+          }
+          & .ba-desc {
+            font-size: $pcArticleText;
+          }
+        }
+      }
+
+      & .arrow {
+        & img {
+        }
+      }
+    }
+  }
+
+  /* ==============================
+	section5  solve
+===============================*/
+  .solve {
+    & .solve-title {
+      & .section-title-wrapper {
+        & .section-title {
+          & .section-title-desc {
+          }
+          & .title {
+            font-size: $pcSectionTitle;
+          }
+        }
+      }
+
+      & .solve1 {
+      }
+      & .solve-title-img {
+      }
+      & .solve2 {
+        height: 7rem;
+      }
+    }
+
+    & .reason {
+      & .flex {
+        & .number-box {
+          width: 15%;
+          height: 3.5rem;
+          & .reason-number {
+            font-size: 3rem;
+          }
+        }
+        & .solve-title {
+          font-size: calc($pcBlockTitle * 1.3);
+        }
+      }
+
+      & .solve-box {
+        height: 28rem;
+        min-height: 500px;
+
+        & .solve-img {
+          width: 55%;
+        }
+        & .solve-text-box {
+          width: 65%;
+
+          & .solve-desc {
+            line-height: 1.3rem;
+          }
+        }
+      }
+
+      &.left {
+        & .solve-box {
+          & .solve-img {
+            left: 1.8rem;
+          }
+          & .solve-text-box {
+            top: 4rem;
+          }
+        }
+      }
+      &.right {
+        & .solve-box {
+          & .solve-img {
+            right: 1.8rem;
+          }
+          & .solve-text-box {
+            top: 4rem;
+          }
+        }
+      }
+    }
+  }
+
+  /* ==============================
+	section6  lesson
+===============================*/
+  .lesson {
+    padding-bottom: 5rem;
+    margin-bottom: 1rem;
+
+    & .bg-rectangle {
+      clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+    }
+
+    & .section-title-wrapper {
+      & .section-title {
+        & .section-title-desc {
+        }
+        & .title {
+          font-size: $pcSectionTitle;
+        }
+      }
+    }
+
+    & .block-title {
+      font-size: $pcBlockTitle;
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    & .lesson-step {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 50px;
+
+      & .lesson-card {
+        width: 32%;
+
+        &:nth-child(2) {
+          margin-top: 1rem;
+        }
+        &:nth-child(3) {
+          margin-top: 2rem;
+        }
+
+        & .step-title {
+          font-size: calc($pcBlockTitle * 0.8);
+        }
+        & .step-desc {
+          font-size: $pcArticleText;
+          line-height: 1.2rem;
+        }
+      }
+    }
+  }
+  /* ==============================
+	section7  contact
+===============================*/
+
+  /* ==============================
+	section8  instructor
+===============================*/
+  .about-instructor {
+    & .instructor {
+      flex-direction: row;
+      align-items: center;
+      margin-right: auto;
+      width: 95%;
+
+      &::after {
+        width: 100%;
+        height: 17rem;
+      }
+
+      & .instructor-img {
+        width: 45%;
+        height: auto;
+        & img {
+        }
+      }
+
+      & .instructor-text-block {
+        width: 50%;
+        & .instructor-name {
+          font-size: calc($pcBlockTitle * 1.2);
+        }
+        & .instructor-career {
+          font-size: $pcArticleText;
+          line-height: 1.4rem;
+        }
+      }
+    }
+
+    & .past-work-wrapper {
+      & .bg-rectangle {
+        top: 8rem;
+        height: 22rem;
+      }
+
+      & .past-work {
+        & .instructor-title {
+          font-size: $pcBlockTitle;
+        }
+        & .work {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 0 20px;
+
+          & .work-img {
+            width: 40%;
+            height: auto;
+            & img {
+              object-fit: cover;
+            }
+          }
+          & .work-text-block {
+            width: 55%;
+            & .work-title {
+              font-size: calc($pcArticleText * 1.2);
+            }
+            & .work-desc {
+              font-size: $pcArticleText;
+              line-height: 1.2rem;
+            }
+
+            & .creation-btn-wrapper {
+              & .each-creation-btn {
+                & > a {
+                  font-size: $pcArticleText;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .message {
+      width: 80%;
+      & .message-desc {
+        font-size: $pcArticleText;
+        line-height: 1.2rem;
+      }
+    }
+
+    .instructor-title {
+      font-size: $pcBlockTitle;
+      // margin-bottom: 15px;
+      // margin-left: 15px;
+    }
+  }
+
+  /* ==============================
+	section9  footer
+===============================*/
+  .footer {
+    & .footer-logo {
+      width: 10%;
+    }
+  }
+
+  /* ==============================
+	PC style
+===============================*/
+  /* ==============================
+	PC section1 main visual
+===============================*/
+  @media screen and (min-width: 1024px) {
+    .main-visual {
+      & .first-view {
+        height: 170vh;
+        // max-height: 1100px;
+        clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+      }
+    }
+
+    /* ==============================
+	PC section3 ideal life
+===============================*/
+    .ideal-life {
+      & .ideal-block {
+        .bg-rectangle {
+          height: 25rem;
+        }
+      }
+
+      .ideal-position3 {
+        & .ideal-desc {
+          margin: 3.5rem 0 0 20px;
+        }
+      }
+    }
+
+    /* ==============================
+	PC section4 problems
+===============================*/
+    .problems {
+      & .title-container {
+        & .problem-title-wrapper {
+          width: 50%;
+
+          & .problem-desc-wrapper {
+            margin-left: 1.5rem;
+          }
+
+          &.right-side {
+            padding: 1.5rem 1rem 2rem 0.5rem;
+
+            & .problem-desc-wrapper {
+              margin-left: 3rem;
+            }
+          }
+        }
+      }
+    }
+
+    /* ==============================
+	PC section5 solve
+===============================*/
+    .solve {
+      & .reason {
+        & .solve-box {
+          height: 23rem;
+
+          & .solve-img {
+            width: 55%;
+          }
+          & .solve-text-box {
+            width: 55%;
+
+            & .solve-desc {
+              line-height: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+
+    /* ==============================
+	PC section8 instructor
+===============================*/
+    .about-instructor {
+      & .instructor {
+        margin-right: auto;
+        width: 90%;
+
+        &::after {
+          height: 16rem;
+        }
+      }
+
+      & .past-work-wrapper {
+        & .bg-rectangle {
+          top: 5rem;
+          height: 18rem;
+        }
+      }
+    }
+  }
+}

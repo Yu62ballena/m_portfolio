@@ -1,0 +1,998 @@
+@charset "UTF-8";
+@use "mixin" as *;
+
+/* ==============================
+	変数
+===============================*/
+// カラー
+$charBlack: #333;
+$charGray: #777;
+$charCase: #ccc;
+$decoBg: #eee;
+$accent: #ff0000;
+
+// SP フォントサイズ
+$sectionTitle: 4rem;
+$sectionTitleSub: 1.6rem;
+$blockTitle: clamp(18px, 1.8rem, 1.8rem);
+$articleText: clamp(16px, 1.6rem, 1.8rem);
+
+// TB フォントサイズ
+
+// PC フォントサイズ
+
+/* ===============================
+		basic
+================================= */
+html {
+  font-size: 2.2vw;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: $charBlack;
+  font-family: serif;
+  font-size: $articleText;
+}
+
+/* ===============================
+		一時テスト用
+================================= */
+.border {
+  border: 1px solid red;
+}
+
+/* ===============================
+		common
+================================= */
+// セクションタイトル
+.section-title-wrapper {
+  position: relative;
+  padding-bottom: 20px;
+
+  & .section-title {
+    & .section-title-desc {
+      font-size: $sectionTitleSub;
+      display: block;
+      color: $charGray;
+      margin-bottom: 0.5rem;
+    }
+    & .title {
+      display: block;
+      font-size: $sectionTitle;
+      line-height: 5.5rem;
+    }
+
+    &.left-aligned {
+      text-align: left;
+      margin-left: 15px;
+    }
+    &.right-aligned {
+      text-align: right;
+      margin-right: 15px;
+    }
+  }
+
+  & .bg-rectangle {
+    width: 85%;
+    height: 10.5rem;
+    bottom: 0;
+
+    &.right {
+      right: 0;
+    }
+  }
+}
+
+// ブロックタイトル
+.block-title {
+  text-align: center;
+  line-height: 3rem;
+  margin: 50px 0;
+  font-size: $blockTitle;
+  font-weight: bold;
+}
+
+// 飾りボックス
+.box-upperright {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+
+  &.box-white-right {
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+  }
+}
+.box-lowerleft {
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+
+  &.box-white-left {
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+  }
+}
+
+// image-container {
+.img-container {
+  max-width: 100vw;
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// 背景飾り
+.deco-bg {
+  background-color: $decoBg;
+  position: absolute;
+  z-index: -1;
+}
+
+// animation-delay
+.delay01 {
+  animation-delay: 0.1s;
+}
+.delay01 {
+  animation-delay: 0.1s;
+}
+.delay02 {
+  animation-delay: 0.2s;
+}
+.delay03 {
+  animation-delay: 0.3s;
+}
+.delay04 {
+  animation-delay: 0.4s;
+}
+.delay05 {
+  animation-delay: 0.5s;
+}
+.delay06 {
+  animation-delay: 0.6s;
+}
+.delay07 {
+  animation-delay: 0.7s;
+}
+.delay08 {
+  animation-delay: 0.8s;
+}
+.delay09 {
+  animation-delay: 0.9s;
+}
+.delay10 {
+  animation-delay: 1s;
+}
+.delay15 {
+  animation-delay: 1.5s;
+}
+
+// z-index
+.zi10 {
+  z-index: 10;
+}
+
+.zi5 {
+  z-index: 5;
+}
+
+.zi1 {
+  z-index: 1;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+// 
+.table-contents {
+  padding: 0 15px;
+  margin-bottom: 30px;
+
+  & .table {
+    margin: 0 auto;
+    width: 100%;
+
+    & tr,
+    & th,
+    & td {
+      border-bottom: 1px solid #000;
+      padding: 10px 0;
+      height: 30px;
+      vertical-align: middle;
+    }
+
+    & th {
+      padding-right: 20px;
+    }
+  }
+}
+
+
+/* ==============================
+	section 1 Main Visual
+===============================*/
+.main-visual {
+  position: relative;
+  width: 100%;
+  // height: 80vh;
+  // min-height: 620px;
+
+  .first-view {
+    width: 100%;
+    background-color: #000;
+    height: 80vh;
+    min-height: 620px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+    z-index: -10;
+  }
+  .header {
+    color: #fff;
+
+    & .site-title {
+      display: flex;
+      align-items: center;
+
+      & .logo {
+        width: 80px;
+      }
+    }
+  }
+
+  & .main-name {
+    text-align: right;
+    font-size: 10vw;
+    margin: 7rem 10px 3rem 0;
+    color: #fff;
+
+    & .name-desc {
+      text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    & .name-desc:first-child {
+      font-size: 12vw;
+    }
+  }
+
+  & .main-pic {
+    width: 90%;
+    margin-bottom: 100px;
+
+    & img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+  }
+}
+
+/* ==============================
+	section2 school name
+===============================*/
+.school {
+  margin-bottom: 100px;
+
+  & .logo-box {
+    width: 35%;
+    margin: 0 auto;
+
+    & .school-logo {
+      width: 100%;
+    }
+  }
+
+  & .school-name-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    padding: 18px 0;
+
+    & .school-name {
+      margin-top: 15px;
+      width: 90%;
+    }
+  }
+}
+
+/* ==============================
+	section3  ideal-life
+===============================*/
+.ideal-life {
+  & .ideal-block {
+    & .ideal-wrapper {
+      position: relative;
+      overflow: hidden;
+
+      & .bg-rectangle,
+      & .bg-rectangle2 {
+        width: 90%;
+        height: 60rem;
+        right: 0;
+        top: 60rem;
+      }
+
+      .ideal {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+
+        & .ideal-img {
+          width: 80%;
+          height: auto;
+          margin-bottom: 12px;
+        }
+        & .ideal-desc {
+          display: inline-block;
+          font-size: $articleText;
+          line-height: 2.5rem;
+        }
+
+        &.ideal-position1,
+        &.ideal-position3,
+        &.ideal-position5 {
+          // & .ideal-img {
+          // }
+          & .ideal-desc {
+            margin-right: auto;
+            margin-left: 15px;
+          }
+        }
+
+        &.ideal-position2,
+        &.ideal-position4,
+        &.ideal-position6 {
+          & .ideal-img {
+            margin-left: auto;
+          }
+          & .ideal-desc {
+            margin-left: auto;
+            margin-right: 15px;
+          }
+        }
+
+        // 個別の大きさ・位置調整
+        &.ideal-position1 {
+          .ideal-img {
+            width: 90%;
+          }
+        }
+
+        &.ideal-position2 {
+          .ideal-img {
+            width: 75%;
+          }
+        }
+
+        &.ideal-position3 {
+          .ideal-img {
+            width: 85%;
+            margin-left: 3%;
+          }
+        }
+
+        &.ideal-position4 {
+          .ideal-img {
+            width: 92%;
+          }
+        }
+
+        &.ideal-position5 {
+          .ideal-img {
+            width: 78%;
+          }
+        }
+
+        &.ideal-position6 {
+          .ideal-img {
+            width: 85%;
+            margin-right: 2%;
+          }
+        }
+      }
+    }
+
+    & .belt {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 50px 0;
+      line-height: 3rem;
+      font-size: 2rem;
+    }
+  }
+
+  & .claim {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../images/ideal-life-comment-back.jpg);
+    background-size: cover;
+    background-position: -700px 0;
+
+    & .claim-box {
+      color: #fff;
+      font-size: 4.5rem;
+      text-align: center;
+      line-height: 12rem;
+      position: relative;
+      padding: 50px 0;
+    }
+  }
+}
+
+/* ==============================
+	section4 problems
+===============================*/
+.problems {
+  overflow: hidden;
+  & .section-title-wrapper {
+    margin-top: 80px;
+
+    & .section-title {
+      & .title {
+        font-size: calc($sectionTitle * 0.875);
+      }
+    }
+  }
+
+  .title-container {
+    width: 100vw;
+    margin-right: auto;
+
+    & .problem-title-wrapper {
+      background-color: #000;
+      color: #fff;
+      width: 80%;
+      padding: 3rem 0.5rem 3rem 0;
+      font-size: 2rem;
+      margin-bottom: 50px;
+      position: relative;
+
+      & .problem-desc-wrapper {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+
+        & .title-number {
+          color: $charCase;
+          display: inline-block;
+          margin-bottom: 0;
+        }
+        & .problem-title {
+          // line-height: 3rem;
+        }
+      }
+
+      &.left-side {
+        transform: rotate(8deg);
+        left: -12px;
+
+        & .title-number {
+          transform: rotate(-8deg);
+          line-height: 1rem;
+        }
+        & .problem-title {
+          transform: rotate(-8deg);
+          margin-left: 2rem;
+        }
+      }
+      &.right-side {
+        margin-left: auto;
+        transform: rotate(-8deg);
+        right: -12px;
+
+        & .problem-desc-wrapper {
+          margin-left: 15%;
+
+          & .title-number {
+            transform: rotate(8deg);
+            margin-bottom: 30px;
+          }
+          & .problem-title {
+            transform: rotate(8deg);
+          }
+        }
+      }
+    }
+  }
+
+  & .ba-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    & .improvement {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+      margin-bottom: 5rem;
+
+      & .ba-card {
+        text-align: center;
+
+        & .ba-title {
+          font-size: $blockTitle;
+        }
+        & .ba-img {
+          width: 100%;
+          border-radius: 50%;
+          margin: 15px 0;
+        }
+        & .ba-desc {
+          font-size: clamp(14px, 1.4rem, 1.4rem);
+        }
+      }
+
+      & .arrow {
+        text-align: center;
+        padding-top: 100px;
+
+        & img {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  & .block-title {
+    margin-top: 10px;
+    margin-bottom: 6rem;
+
+    &.mini {
+      font-size: calc($blockTitle * 0.9);
+    }
+  }
+}
+
+/* ==============================
+	section5 solve problems
+===============================*/
+.solve {
+  overflow: hidden;
+
+  & .solve-title {
+    position: relative;
+
+    & .section-title-wrapper {
+      position: absolute;
+      z-index: 10;
+      right: 0;
+      bottom: 10px;
+
+      & .section-title {
+        & .section-title-desc {
+          color: $charCase;
+        }
+        & .title {
+          font-size: calc($sectionTitle * 0.75);
+          color: #fff;
+        }
+      }
+    }
+
+    & .solve1 {
+      display: block;
+      width: 75%;
+      height: 5rem;
+      background-color: #000;
+    }
+    & .solve-title-img {
+      width: 100%;
+      display: block;
+      transform: scale(1.1);
+    }
+    & .solve2 {
+      display: block;
+      width: 90%;
+      margin-left: auto;
+      height: 10rem;
+      background-color: #000;
+    }
+  }
+
+  & .reason {
+    width: 100%;
+
+    // title
+    & .flex {
+      margin: 60px 0 30px;
+      display: flex;
+      justify-content: flex-start;
+
+      & .number-box {
+        width: 40%;
+        background-color: #000;
+        text-align: center;
+        margin-right: 10px;
+        padding: 10px;
+
+        & .reason-number {
+          color: #fff;
+          font-size: 8rem;
+        }
+      }
+      & .solve-title {
+        margin-top: auto;
+      }
+    }
+
+    & .solve-box {
+      position: relative;
+      height: 68rem;
+      min-height: 720px;
+
+      & .solve-img {
+        position: absolute;
+        width: 90%;
+      }
+      & .solve-text-box {
+        position: absolute;
+        width: 90%;
+        padding: 20px;
+        background-color: #000;
+        & .solve-desc {
+          color: #fff;
+          line-height: 2.5rem;
+        }
+      }
+    }
+
+    &.left {
+      & .solve-box {
+        & .solve-img {
+          top: 0;
+          left: 0;
+        }
+        & .solve-text-box {
+          top: 20rem;
+          right: 0;
+        }
+      }
+    }
+    &.right {
+      & .flex {
+        flex-direction: row-reverse;
+
+        & .number-box {
+          margin-right: 0;
+          margin-left: 10px;
+        }
+      }
+      & .solve-box {
+        & .solve-img {
+          top: 0;
+          right: 0;
+        }
+        & .solve-text-box {
+          top: 20rem;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+/* ==============================
+	section6  lesson
+===============================*/
+.lesson {
+  position: relative;
+
+  & .bg-rectangle {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  }
+
+  & .section-title-wrapper {
+    & .section-title {
+      & .section-title-desc {
+      }
+      & .title {
+        font-size: calc($sectionTitle * 0.8);
+      }
+    }
+  }
+
+  & .block-title {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  
+  & .lesson-step {
+    padding: 0 15px 5px;
+
+    & .lesson-card {
+      margin-bottom: 50px;
+
+      & .lesson-image {
+        & img {
+          box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+        }
+      }
+      & .step-title {
+        font-size: clamp(20px, 2rem, 2rem);
+        margin: 15px 0 25px;
+      }
+      & .step-desc {
+        line-height: 2.5rem;
+      }
+    }
+  }
+}
+
+/* ==============================
+	section7 get in touch with me
+===============================*/
+.contact {
+  overflow: hidden;
+
+  & .contact-title {
+    & .section-title-wrapper {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 15px;
+      margin-left: auto;
+      width: 80%;
+    }
+
+    & .contact-box-container {
+      width: 100%;
+      overflow: hidden;
+      transform: scale(1.05);
+      background-image: url(../images/mail.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      & .contact-box {
+        height: 250px;
+        transform: scale(1.05);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+      }
+    }
+
+    & .contact1 {
+      display: block;
+      width: 70%;
+      height: 60px;
+      background-color: #000;
+    }
+  }
+}
+
+/* ==============================
+	section8 about instructor
+===============================*/
+.about-instructor {
+  margin-top: 80px;
+
+  .instructor {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    padding-bottom: 30px;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 70%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: -10;
+      background-color: $decoBg;
+    }
+
+    & .instructor-img {
+      width: 90%;
+      margin: 0 auto 20px;
+      & img {
+      }
+    }
+
+    & .instructor-text-block {
+      font-weight: bold;
+      & .instructor-name {
+        font-size: clamp(22px, 2.2rem, 2.2rem);
+        margin: 10px 0;
+      }
+      & .instructor-career {
+        line-height: 3rem;
+        font-size: $blockTitle;
+
+        & span {
+          display: block;
+        }
+      }
+    }
+  }
+
+  & .past-work-wrapper {
+    position: relative;
+
+    & .bg-rectangle {
+      width: 90%;
+      height: 70rem;
+      left: 0;
+      top: 20rem;
+    }
+
+    & .past-work {
+      padding: 0 15px;
+
+
+
+      & .work {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 60px;
+
+        & .work-img {
+          width: 100%;
+          & img {
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+          }
+        }
+
+        & .work-text-block {
+          & .work-title {
+            margin: 15px 0;
+            font-size: clamp(20px, 2rem, 2rem);
+          }
+          & .work-desc {
+            line-height: 2.5rem;
+          }
+
+          & .creation-btn-wrapper {
+            text-align: center;
+            margin-top: 40px;
+
+            & .each-creation-btn {
+              padding: 0;
+              margin: 0;
+              background-color: transparent;
+              border: none;
+              position: relative;
+
+              & > a {
+                padding: 5px 30px;
+                text-decoration: none;
+                color: #000;
+                border-bottom: 1px solid #000;
+                font-size: $blockTitle;
+                font-weight: 300;
+              }
+
+              & > span {
+                position: absolute;
+                content: "";
+                height: 1px;
+                width: 10px;
+                background-color: #000;
+                bottom: -2px;
+                right: -1px;
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & .from-graduate {
+    position: relative;
+    text-align: center;
+
+    & .bg-rectangle {
+      width: 95%;
+      height: 28rem;
+      left: 0;
+      top: 15rem;
+    }
+
+    & .about-teacher {
+
+    }
+  
+    & .interview {
+
+    }
+  
+    & .after-graduation {
+      & .after-graduation-desc {
+        padding: 10px 15px;
+        line-height: 3rem;
+        text-align: left;
+      }
+    }
+  }
+  
+
+  & .message {
+    background-color: $decoBg;
+    width: 90%;
+    margin-left: auto;
+    margin-bottom: 30px;
+    padding: 30px 20px;
+
+    & .message-desc {
+      line-height: 2.5rem;
+      margin-bottom: 20px;
+    }
+  }
+
+  .instructor-title {
+    font-size: $blockTitle;
+    margin-bottom: 15px;
+    margin-left: 15px;
+  }
+  
+  .movie-container {
+    width: 80%;
+    margin: 0 auto 5rem;
+    background-color: #eee;
+
+    & video {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+}
+
+/* ==============================
+	footer
+===============================*/
+.footer {
+  background-color: #000;
+  text-align: center;
+  padding: 10px 0 30px;
+
+  & .footer-logo {
+    width: 20%;
+    margin: 0 auto;
+    & img {
+    }
+  }
+
+  & .footer-desc {
+    color: #fff;
+  }
+}
+/* ==============================
+	PCサイト
+===============================*/
+@media screen and (min-width: 768px) {
+}
