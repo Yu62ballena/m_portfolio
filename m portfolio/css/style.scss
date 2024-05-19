@@ -1,0 +1,1276 @@
+@charset "UTF-8";
+@use "mixin" as *;
+
+/* ==============================
+	変数
+===============================*/
+// カラー
+$charBlack: #333;
+$charGray: #777;
+$charCase: #ccc;
+$decoBg: #eee;
+$accent: #ff0000;
+
+// SP フォントサイズ
+$sectionTitle: 4rem;
+$sectionTitleSub: 1.6rem;
+$blockTitle: clamp(18px, 1.8rem, 1.8rem);
+$articleText: clamp(16px, 1.6rem, 1.8rem);
+
+/* ===============================
+		basic
+================================= */
+html {
+  font-size: 2.2vw;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: $charBlack;
+  font-family: serif;
+  font-size: $articleText;
+  // position: relative;
+}
+
+main {
+  position: relative;
+}
+
+/* ===============================
+		common
+================================= */
+// loading画面
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  color: #000;
+  background-color: #fff;
+  opacity: 1;
+  transition: opacity 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  text-align: center;
+  pointer-events: none;
+
+  &.view {
+    opacity: 0;
+  }
+
+  & .black-circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #000;
+    width: 125vh;
+    height: 125vh;
+    transform: scale(0);
+
+    &.view {
+      animation: blackCircle 1.2s;
+    }
+  }
+
+  @keyframes blackCircle {
+    0% {
+      transform: scale(0);
+    }
+    30% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+
+  & .loading-desc {
+    font-size: 3rem;
+    line-height: 5rem;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+
+    &.view {
+      display: none;
+    }
+  }
+}
+
+// セクションタイトル
+.section-title-wrapper {
+  position: relative;
+  padding-bottom: 20px;
+
+  & .section-title {
+    & .section-title-desc {
+      font-size: $sectionTitleSub;
+      display: block;
+      color: $charGray;
+      margin-bottom: 0.5rem;
+    }
+    & .title {
+      display: block;
+      font-size: $sectionTitle;
+      line-height: 5.5rem;
+    }
+
+    &.left-aligned {
+      text-align: left;
+      margin-left: 15px;
+    }
+    &.right-aligned {
+      text-align: right;
+      margin-right: 15px;
+    }
+  }
+
+  & .bg-rectangle {
+    width: 85%;
+    height: 10.5rem;
+    bottom: 0;
+
+    &.right {
+      right: 0;
+    }
+  }
+}
+
+// ブロックタイトル
+.block-title {
+  text-align: center;
+  line-height: 3rem;
+  margin: 50px 0;
+  font-size: $blockTitle;
+  font-weight: bold;
+}
+
+// 飾りボックス
+.box-upperright {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+
+  &.box-white-right {
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+  }
+}
+.box-lowerleft {
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+
+  &.box-white-left {
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+  }
+}
+
+// image-container {
+.img-container {
+  max-width: 100vw;
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// 背景飾り
+.deco-bg {
+  background-color: $decoBg;
+  position: absolute;
+  z-index: -1;
+}
+
+animation-delay .delay01 {
+  animation-delay: 0.1s;
+}
+.delay01 {
+  animation-delay: 0.1s;
+}
+.delay02 {
+  animation-delay: 0.2s;
+}
+.delay03 {
+  animation-delay: 0.3s;
+}
+.delay04 {
+  animation-delay: 0.4s;
+}
+.delay05 {
+  animation-delay: 0.5s;
+}
+.delay06 {
+  animation-delay: 0.6s;
+}
+.delay07 {
+  animation-delay: 0.7s;
+}
+.delay08 {
+  animation-delay: 0.8s;
+}
+.delay09 {
+  animation-delay: 0.9s;
+}
+.delay10 {
+  animation-delay: 1s;
+}
+.delay15 {
+  animation-delay: 1.5s;
+}
+.delay47 {
+  animation-delay: 4.7s;
+}
+.delay49 {
+  animation-delay: 4.9s;
+}
+.delay51 {
+  animation-delay: 5.1s;
+}
+.delay53 {
+  animation-delay: 5.3s;
+}
+.delay55 {
+  animation-delay: 5.5s;
+}
+
+// flex
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+// table
+.table-contents {
+  padding: 0 15px;
+  margin-bottom: 30px;
+
+  & .table {
+    margin: 0 auto;
+    width: 100%;
+
+    & tr,
+    & th,
+    & td {
+      border-bottom: 1px solid #000;
+      padding: 10px 0;
+      height: 30px;
+      vertical-align: middle;
+    }
+
+    & th {
+      padding-right: 20px;
+    }
+  }
+}
+
+// cover-slide
+.cover-slide {
+  &.cc-gray {
+    &::after {
+      background-color: #eee;
+    }
+  }
+}
+
+// marker
+.marker {
+  background: linear-gradient(transparent 80%, rgba(255, 0, 0, 0.6) 40%);
+  font-weight: bold;
+}
+
+// contact-btn
+.contact-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 80px;
+  height: 80px;
+  background-color: #000;
+  border-radius: 50%;
+  z-index: 100;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: 0.8s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  // ボタンのピクピクがいらない場合はanimationをコメントアウト
+  animation: zoomInOut 3s infinite;
+
+  &.inview {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+
+  & img {
+    width: 75%;
+    height: 75%;
+  }
+
+  & picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @keyframes zoomInOut {
+    0%,
+    8%,
+    16% {
+      transform: scale(1);
+    }
+    4%,
+    12% {
+      transform: scale(1.4);
+    }
+    8% {
+      transform: scale(1);
+    }
+  }
+}
+
+/* ==============================
+	section 1 Main Visual
+===============================*/
+.main-visual {
+  position: relative;
+  width: 100%;
+
+  // 黒背景
+  .first-view {
+    width: 100%;
+    background-color: #000;
+    height: 80vh;
+    min-height: 620px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+    z-index: -10;
+  }
+
+  // ヘッダー部分
+  .header {
+    color: #fff;
+
+    & .site-title {
+      display: flex;
+      align-items: center;
+
+      & .logo {
+        width: 80px;
+      }
+    }
+  }
+
+  // キャッチコピー
+  & .main-name {
+    text-align: right;
+    font-size: 3.5rem;
+    margin: 7rem 10px 3rem 0;
+    color: #fff;
+    line-height: 7rem;
+
+    & .name-desc {
+      text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    & .name-desc > .large {
+      font-size: 4.4rem;
+    }
+  }
+
+  // スクロールカーソル
+  .scroll-cursor {
+    position: absolute;
+    display: inline-block;
+    top: 73rem;
+    right: 5rem;
+    height: 50px;
+
+    & .scroll-down {
+      animation: arrowMove 1s ease-in-out infinite;
+      position: absolute;
+      top: 1%;
+      right: 50%;
+
+      @keyframes arrowMove {
+        0% {
+          top: 1%;
+        }
+
+        50% {
+          top: 10%;
+        }
+
+        100% {
+          top: 1%;
+        }
+      }
+
+      // 文字
+      & span {
+        position: absolute;
+        left: -2rem;
+        top: 1.8rem;
+        color: #000;
+        font-size: 1.6rem;
+        letter-spacing: 0.05rem;
+        writing-mode: vertical-rl;
+      }
+
+      // 縦棒
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 7rem;
+        background-color: #000;
+      }
+
+      // 矢印部分
+      & .scroll-arrow-circle {
+        position: absolute;
+        top: 7rem;
+        left: -30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // 内側の三角
+        & .scroll-arrow-triangle {
+          height: 50%;
+          width: 50%;
+          background-color: #fff;
+          clip-path: polygon(0 10%, 100% 10%, 50% 100%);
+        }
+      }
+    }
+  }
+
+  // アイキャッチ画像
+  & .main-pic {
+    width: 90%;
+    margin-bottom: 100px;
+
+    & img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+  }
+}
+
+/* ==============================
+	section2 school name
+===============================*/
+.school {
+  margin-bottom: 100px;
+
+  // ロゴ
+  & .logo-box {
+    width: 35%;
+    margin: 0 auto;
+
+    & .school-logo {
+      width: 100%;
+    }
+  }
+
+  // スクール名
+  & .school-name-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    padding: 18px 0;
+
+    & .school-name {
+      margin-top: 15px;
+      width: 90%;
+    }
+  }
+}
+
+/* ==============================
+	section3  ideal-life
+===============================*/
+.ideal-life {
+  & .ideal-block {
+    & .ideal-wrapper {
+      position: relative;
+      overflow: hidden;
+
+      // タイトル背景飾り
+      & .bg-rectangle,
+      & .bg-rectangle2 {
+        width: 90%;
+        height: 60rem;
+        right: 0;
+        top: 60rem;
+      }
+
+      // 理想の生活 各ブロック部分
+      .ideal {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+
+        & .ideal-img {
+          width: 80%;
+          height: auto;
+          margin-bottom: 12px;
+        }
+        & .ideal-desc {
+          display: inline-block;
+          font-size: $articleText;
+          line-height: 2.5rem;
+        }
+
+        // 奇数番目のブロックを左寄せ
+        &.ideal-position1,
+        &.ideal-position3,
+        &.ideal-position5 {
+          & .ideal-desc {
+            margin-right: auto;
+            margin-left: 15px;
+          }
+        }
+
+        // 偶数番目のブロックを右寄せ
+        &.ideal-position2,
+        &.ideal-position4,
+        &.ideal-position6 {
+          & .ideal-img {
+            margin-left: auto;
+          }
+          & .ideal-desc {
+            margin-left: auto;
+            margin-right: 15px;
+          }
+        }
+
+        // 個別の大きさ・位置調整
+        &.ideal-position1 {
+          .ideal-img {
+            width: 90%;
+          }
+        }
+
+        &.ideal-position2 {
+          .ideal-img {
+            width: 75%;
+          }
+        }
+
+        &.ideal-position3 {
+          .ideal-img {
+            width: 85%;
+            margin-left: 3%;
+          }
+        }
+
+        &.ideal-position4 {
+          .ideal-img {
+            width: 92%;
+          }
+        }
+
+        &.ideal-position5 {
+          .ideal-img {
+            width: 78%;
+          }
+        }
+
+        &.ideal-position6 {
+          .ideal-img {
+            width: 85%;
+            margin-right: 2%;
+          }
+        }
+      }
+    }
+
+    // 各ブロック間のメッセージ
+    & .block-title {
+      & h3 {
+        & span {
+          display: inline-block;
+          width: 35rem;
+          transform: translateY(1rem);
+
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    // 帯部分
+    & .belt {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 50px 0;
+      line-height: 3rem;
+      font-size: 2rem;
+    }
+  }
+
+  // エンジニアなら手に入れられます
+  & .claim {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../images/ideal-life-comment-back.jpg);
+    background-size: cover;
+    background-position: -700px 0;
+
+    & .claim-box {
+      color: #fff;
+      font-size: 4.5rem;
+      text-align: center;
+      line-height: 12rem;
+      position: relative;
+      padding: 50px 0;
+    }
+  }
+}
+
+/* ==============================
+	section4 problems
+===============================*/
+.problems {
+  overflow: hidden;
+
+  // セクションタイトル
+  & .section-title-wrapper {
+    margin-top: 80px;
+
+    & .section-title {
+      & .title {
+        font-size: calc($sectionTitle * 0.875);
+      }
+    }
+  }
+
+  // 問題タイトル
+  .title-container {
+    width: 100vw;
+    margin-right: auto;
+
+    & .problem-title-wrapper {
+      background-color: #000;
+      color: #fff;
+      width: 80%;
+      padding: 3rem 0.5rem 3rem 0;
+      font-size: 2rem;
+      margin-bottom: 50px;
+      position: relative;
+
+      & .problem-desc-wrapper {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+
+        & .title-number {
+          color: $charCase;
+          display: inline-block;
+          margin-bottom: 0;
+        }
+      }
+
+      // 1つ目のタイトル個別
+      &.left-side {
+        transform: rotate(8deg);
+        left: -12px;
+
+        & .title-number {
+          transform: rotate(-8deg);
+          line-height: 1rem;
+        }
+        & .problem-title {
+          transform: rotate(-8deg);
+          margin-left: 2rem;
+        }
+      }
+
+      // 2つ目のタイトル個別
+      &.right-side {
+        margin-left: auto;
+        transform: rotate(-8deg);
+        right: -12px;
+
+        & .problem-desc-wrapper {
+          margin-left: 15%;
+
+          & .title-number {
+            transform: rotate(8deg);
+            margin-bottom: 30px;
+          }
+          & .problem-title {
+            transform: rotate(8deg);
+          }
+        }
+      }
+    }
+  }
+
+  // ビフォーアフター
+  & .ba-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    // ビフォーアフター1セット
+    & .improvement {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+      margin-bottom: 5rem;
+
+      // ビフォーアフターのカード
+      & .ba-card {
+        text-align: center;
+        flex: 2;
+
+        & .ba-title {
+          font-size: $blockTitle;
+        }
+        & .ba-img {
+          width: 100%;
+          border-radius: 50%;
+          margin: 15px 0;
+        }
+        & .ba-desc {
+          font-size: clamp(14px, 1.4rem, 1.4rem);
+          line-height: 2rem;
+        }
+      }
+
+      // ビフォーアフターをつなぐ矢印
+      & .arrow {
+        text-align: center;
+        padding-top: 12rem;
+        flex: 1;
+
+        & img {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  // メッセージ（problem description）
+  & .block-title {
+    margin-top: 10px;
+    margin-bottom: 6rem;
+
+    &.mini {
+      font-size: calc($blockTitle * 0.9);
+    }
+  }
+}
+
+/* ==============================
+	section5 solve problems
+===============================*/
+.solve {
+  overflow: hidden;
+
+  // セクションタイトル
+  & .solve-title {
+    font-size: 2.6rem;
+    position: relative;
+
+    & .section-title-wrapper {
+      position: absolute;
+      z-index: 10;
+      right: 0;
+      bottom: 10px;
+
+      & .section-title {
+        & .section-title-desc {
+          color: $charCase;
+        }
+        & .title {
+          font-size: calc($sectionTitle * 0.75);
+          color: #fff;
+        }
+      }
+    }
+
+    // セクションタイトル 飾り・画像部分
+    & .solve1 {
+      display: block;
+      width: 75%;
+      height: 5rem;
+      background-color: #000;
+    }
+    & .solve-title-img {
+      width: 100%;
+      display: block;
+      transform: scale(1.1);
+    }
+    & .solve2 {
+      display: block;
+      width: 90%;
+      margin-left: auto;
+      height: 10rem;
+      background-color: #000;
+    }
+  }
+
+  // 理由
+  & .reasons {
+    & .reason {
+      width: 100%;
+
+      // ブロックごとのタイトル
+      & .flex {
+        margin: 60px 0 30px;
+        display: flex;
+        justify-content: flex-start;
+
+        & .number-box {
+          width: 40%;
+          background-color: #000;
+          margin-right: 10px;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          & .reason-number {
+            color: #fff;
+            font-size: 8rem;
+          }
+        }
+        & .solve-title {
+          margin-top: auto;
+        }
+      }
+
+      //　ブロックのコンテンツ部分
+      & .solve-box {
+        position: relative;
+        height: 70rem;
+        min-height: 700px;
+
+        & .solve-img {
+          position: absolute;
+          width: 90%;
+        }
+        & .solve-text-box {
+          position: absolute;
+          width: 90%;
+          padding: 20px;
+          background-color: #000;
+          & .solve-desc {
+            color: #fff;
+            line-height: 2.5rem;
+          }
+        }
+      }
+
+      &.left {
+        & .solve-box {
+          & .solve-img {
+            top: 0;
+            left: 0;
+          }
+          & .solve-text-box {
+            top: 20rem;
+            right: 0;
+          }
+        }
+      }
+      &.right {
+        & .flex {
+          flex-direction: row-reverse;
+
+          & .number-box {
+            margin-right: 0;
+            margin-left: 10px;
+          }
+        }
+        & .solve-box {
+          & .solve-img {
+            top: 0;
+            right: 0;
+          }
+          & .solve-text-box {
+            top: 20rem;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ==============================
+	section6  lesson
+===============================*/
+.lesson {
+  position: relative;
+
+  // 背景飾り
+  & .bg-rectangle {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  }
+
+  // セクションタイトル
+  & .section-title-wrapper {
+    & .section-title {
+      & .title {
+        font-size: calc($sectionTitle * 0.8);
+      }
+    }
+  }
+
+  // メッセージ
+  & .block-title {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  // レッスンステップ
+  & .lesson-step {
+    padding: 0 15px 5px;
+
+    & .lesson-card {
+      margin-bottom: 50px;
+
+      & .lesson-image {
+        & img {
+          box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+        }
+      }
+      & .step-title {
+        font-size: clamp(20px, 2rem, 2rem);
+        margin: 15px 0 25px;
+      }
+      & .step-desc {
+        line-height: 2.5rem;
+      }
+    }
+  }
+}
+
+/* ==============================
+	section7 contact
+===============================*/
+.contact {
+  overflow: hidden;
+
+  // セクションタイトル
+  & .contact-title {
+    & .section-title-wrapper {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 15px;
+      margin-left: auto;
+      width: 80%;
+    }
+
+    // 背景・コンテンツ
+    & .contact-box-container {
+      width: 100%;
+      overflow: hidden;
+      transform: scale(1.05);
+      background-image: url(../images/mail.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      & .contact-box {
+        height: 30rem;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        & p {
+          font-size: $articleText;
+          line-height: 3rem;
+        }
+
+        // ボタン・QR
+        & .how-contact {
+          margin: 4rem 0;
+
+          & a {
+            & img {
+              height: 6rem;
+            }
+          }
+
+          & .qr-code {
+            display: none;
+          }
+        }
+      }
+    }
+
+    // 飾り
+    & .contact1 {
+      display: block;
+      width: 70%;
+      height: 60px;
+      background-color: #000;
+    }
+  }
+}
+
+/* ==============================
+	section8 about instructor
+===============================*/
+.about-instructor {
+  margin-top: 80px;
+  overflow: hidden;
+
+  // 講師
+  .instructor {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    padding-bottom: 30px;
+
+    // 背景飾り
+    &::after {
+      content: "";
+      width: 100%;
+      height: 70%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: -10;
+      background-color: $decoBg;
+    }
+
+    // 講師画像
+    & .instructor-img {
+      width: 90%;
+      margin: 0 auto 20px;
+    }
+
+    // 講師の名前・キャリア
+    & .instructor-text-block {
+      font-weight: bold;
+      & .instructor-name {
+        font-size: clamp(22px, 2.2rem, 2.2rem);
+        margin: 10px 0;
+      }
+      & .instructor-career {
+        line-height: 3rem;
+        font-size: $blockTitle;
+
+        & span {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // 過去の成果物
+  & .past-work-wrapper {
+    position: relative;
+
+    // 背景飾り
+    & .bg-rectangle {
+      width: 90%;
+      height: 70rem;
+      left: 0;
+      top: 20rem;
+    }
+
+    // 成果物
+    & .past-work {
+      padding: 0 15px;
+
+      & .work {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 60px;
+
+        & .work-img {
+          width: 100%;
+          & img {
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+          }
+        }
+
+        & .work-text-block {
+          & .work-title {
+            margin: 15px 0;
+            font-size: clamp(20px, 2rem, 2rem);
+          }
+          & .work-desc {
+            line-height: 2.5rem;
+          }
+
+          & .creation-btn-wrapper {
+            text-align: center;
+            margin-top: 40px;
+
+            & .each-creation-btn {
+              padding: 0;
+              margin: 0;
+              background-color: transparent;
+              border: none;
+              position: relative;
+
+              & > a {
+                padding: 5px 30px;
+                text-decoration: none;
+                color: #000;
+                border-bottom: 1px solid #000;
+                font-size: $blockTitle;
+                font-weight: 300;
+              }
+
+              & > span {
+                position: absolute;
+                content: "";
+                height: 1px;
+                width: 10px;
+                background-color: #000;
+                bottom: -2px;
+                right: -1px;
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 受講生・卒業生からのメッセージ
+  & .from-graduate {
+    position: relative;
+    text-align: center;
+
+    // インタビューセクション
+    & .interview {
+      // 背景飾り
+      & .bg-rectangle {
+        width: 85%;
+        height: 47rem;
+        left: 0;
+        top: 15rem;
+      }
+    }
+
+    // 卒業生インタビュー
+    & .after-graduation {
+      & .after-graduation-desc {
+        padding: 2rem 3rem;
+        line-height: 3rem;
+        text-align: left;
+        margin: 3rem 0;
+
+        & li {
+          list-style-position: inside;
+        }
+      }
+    }
+  }
+
+  // 講師からのメッセージ
+  & .message {
+    background-color: $decoBg;
+    width: 90%;
+    margin-left: auto;
+    margin-bottom: 30px;
+    padding: 30px 20px;
+
+    & .message-desc {
+      line-height: 2.5rem;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // 受講生・卒業生からのメッセージのタイトル
+  .instructor-title {
+    font-size: $blockTitle;
+    margin-bottom: 15px;
+    margin-left: 15px;
+  }
+
+  // 動画用コンテナ
+  .movie-container {
+    width: 94%;
+    margin: 0 auto 5rem;
+
+    & video {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* ==============================
+	footer
+===============================*/
+.footer {
+  background-color: #000;
+  text-align: center;
+  padding: 10px 0 30px;
+
+  & .footer-logo {
+    width: 20%;
+    margin: 0 auto;
+  }
+
+  & .footer-desc {
+    color: #fff;
+  }
+}
+/* ==============================
+	PCサイト
+===============================*/
+@media screen and (min-width: 768px) {
+}
