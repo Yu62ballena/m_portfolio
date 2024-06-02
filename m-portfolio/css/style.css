@@ -1,0 +1,1185 @@
+@charset "UTF-8";
+/* ==============================
+	変数
+===============================*/
+/* ===============================
+		basic
+================================= */
+html {
+  font-size: 2.2vw;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font-family: serif;
+  font-size: clamp(16px, 1.6rem, 1.8rem);
+}
+
+main {
+  position: relative;
+}
+
+/* ==============================
+	loading画面
+===============================*/
+.whole-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#particles-js {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+}
+
+#load-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#load-wrapper .load-title {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  line-height: 6rem;
+  text-align: center;
+}
+#load-wrapper .prompt {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+#load-wrapper .questions-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#load-wrapper .questions-container form .question {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+#load-wrapper .questions-container form .question .box-container label {
+  margin-right: 10px;
+}
+
+/* Checkmark style starts */
+@keyframes dothabottomcheck {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 15px;
+  }
+}
+@keyframes dothatopcheck {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: 36px;
+  }
+}
+input[type=checkbox] {
+  display: none;
+}
+
+.check-box {
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  border: 3px solid #000;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  transition: border-color ease 0.2s;
+  cursor: pointer;
+}
+.check-box::before, .check-box::after {
+  box-sizing: border-box;
+  position: absolute;
+  height: 0;
+  width: 6px;
+  background-color: red;
+  display: inline-block;
+  transform-origin: left top;
+  border-radius: 5px;
+  content: " ";
+  transition: opacity ease 0.5;
+}
+.check-box::before {
+  top: 21.6px;
+  left: 12.3px;
+  box-shadow: 0 0 0 1.5px #fff;
+  transform: rotate(-135deg);
+}
+.check-box::after {
+  top: 11.1px;
+  left: 1.5px;
+  transform: rotate(-45deg);
+}
+
+input[type=checkbox]:checked + .check-box,
+.check-box.checked {
+  border-color: #000;
+}
+input[type=checkbox]:checked + .check-box::after,
+.check-box.checked::after {
+  height: 15px;
+  animation: dothabottomcheck 0.2s ease 0s forwards;
+}
+input[type=checkbox]:checked + .check-box::before,
+.check-box.checked::before {
+  height: 36px;
+  animation: dothatopcheck 0.4s ease 0s forwards;
+}
+
+.submit-btn {
+  margin-top: 5rem;
+}
+
+.submit-btn button {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 2rem 5rem;
+  color: #313131;
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+  border: none;
+  font-size: 2.5rem;
+}
+
+.submit-btn button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(107, 182, 255, 0.2);
+  transition: all 0.3s;
+}
+
+.submit-btn button:hover::before {
+  opacity: 0;
+  transform: scale(0.4, 0.4);
+}
+
+.submit-btn button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 2px solid rgba(107, 182, 255, 0.4);
+  transform: scale(1.2, 1.2);
+}
+
+.submit-btn button:hover::after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+/* ===============================
+		common
+================================= */
+.section-title-wrapper {
+  position: relative;
+  padding-bottom: 20px;
+}
+.section-title-wrapper .section-title .section-title-desc {
+  font-size: 1.6rem;
+  display: block;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+.section-title-wrapper .section-title .title {
+  display: block;
+  font-size: 4rem;
+  line-height: 5.5rem;
+}
+.section-title-wrapper .section-title.left-aligned {
+  text-align: left;
+  margin-left: 15px;
+}
+.section-title-wrapper .section-title.right-aligned {
+  text-align: right;
+  margin-right: 15px;
+}
+.section-title-wrapper .bg-rectangle {
+  width: 85%;
+  height: 10.5rem;
+  bottom: 0;
+}
+.section-title-wrapper .bg-rectangle.right {
+  right: 0;
+}
+
+.block-title {
+  text-align: center;
+  line-height: 3rem;
+  margin: 50px 0;
+  font-size: clamp(18px, 1.8rem, 1.8rem);
+  font-weight: bold;
+}
+
+.box-upperright {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+}
+.box-upperright.box-white-right {
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.box-lowerleft {
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+}
+.box-lowerleft.box-white-left {
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #fff;
+}
+
+.img-container {
+  max-width: 100vw;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.deco-bg {
+  background-color: #eee;
+  position: absolute;
+  z-index: -1;
+}
+
+animation-delay .delay01 {
+  animation-delay: 0.1s;
+}
+
+.delay01 {
+  animation-delay: 0.1s;
+}
+
+.delay02 {
+  animation-delay: 0.2s;
+}
+
+.delay03 {
+  animation-delay: 0.3s;
+}
+
+.delay04 {
+  animation-delay: 0.4s;
+}
+
+.delay05 {
+  animation-delay: 0.5s;
+}
+
+.delay06 {
+  animation-delay: 0.6s;
+}
+
+.delay07 {
+  animation-delay: 0.7s;
+}
+
+.delay08 {
+  animation-delay: 0.8s;
+}
+
+.delay09 {
+  animation-delay: 0.9s;
+}
+
+.delay10 {
+  animation-delay: 1s;
+}
+
+.delay11 {
+  animation-delay: 1.1s;
+}
+
+.delay12 {
+  animation-delay: 1.2s;
+}
+
+.delay13 {
+  animation-delay: 1.3s;
+}
+
+.delay14 {
+  animation-delay: 1.4s;
+}
+
+.delay15 {
+  animation-delay: 1.5s;
+}
+
+.delay16 {
+  animation-delay: 1.6s;
+}
+
+.delay18 {
+  animation-delay: 1.8s;
+}
+
+.delay47 {
+  animation-delay: 4.7s;
+}
+
+.delay49 {
+  animation-delay: 4.9s;
+}
+
+.delay51 {
+  animation-delay: 5.1s;
+}
+
+.delay53 {
+  animation-delay: 5.3s;
+}
+
+.delay55 {
+  animation-delay: 5.5s;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.table-contents {
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+.table-contents .table {
+  margin: 0 auto;
+  width: 100%;
+}
+.table-contents .table tr, .table-contents .table th, .table-contents .table td {
+  border-bottom: 1px solid #000;
+  padding: 10px 0;
+  height: 30px;
+  vertical-align: middle;
+}
+.table-contents .table th {
+  padding-right: 20px;
+}
+
+.cover-slide.cc-gray::after {
+  background-color: #eee;
+}
+
+.marker {
+  background: linear-gradient(transparent 80%, rgba(255, 0, 0, 0.6) 40%);
+  font-weight: bold;
+}
+
+.contact-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 80px;
+  height: 80px;
+  background-color: #000;
+  border-radius: 50%;
+  z-index: 100;
+  opacity: 0;
+  transition: 0.8s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: zoomInOut 3s infinite;
+}
+.contact-btn.inview {
+  opacity: 0.5;
+}
+.contact-btn img {
+  width: 75%;
+  height: 75%;
+}
+.contact-btn picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes zoomInOut {
+  0%, 8%, 16% {
+    transform: scale(1);
+  }
+  4%, 12% {
+    transform: scale(1.4);
+  }
+  8% {
+    transform: scale(1);
+  }
+}
+
+/* ==============================
+	section 1 Main Visual
+===============================*/
+.main-visual {
+  position: relative;
+  width: 100%;
+}
+.main-visual .first-view {
+  width: 100%;
+  background-color: #000;
+  height: 80rem;
+  min-height: 620px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+  z-index: -10;
+}
+.main-visual .header {
+  color: #fff;
+}
+.main-visual .header .site-title {
+  display: flex;
+  align-items: center;
+}
+.main-visual .header .site-title .logo {
+  width: 80px;
+}
+.main-visual .main-name {
+  text-align: right;
+  font-size: 3.5rem;
+  margin: 7rem 10px 3rem 0;
+  color: #fff;
+  line-height: 7rem;
+}
+.main-visual .main-name .name-desc {
+  text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.4);
+}
+.main-visual .main-name .name-desc > .large {
+  font-size: 4.4rem;
+}
+.main-visual .scroll-cursor {
+  position: absolute;
+  display: inline-block;
+  top: 73rem;
+  right: 5rem;
+  height: 50px;
+}
+.main-visual .scroll-cursor .scroll-down {
+  animation: arrowMove 1s ease-in-out infinite;
+  position: absolute;
+  top: 1%;
+  right: 50%;
+}
+@keyframes arrowMove {
+  0% {
+    top: 1%;
+  }
+  50% {
+    top: 10%;
+  }
+  100% {
+    top: 1%;
+  }
+}
+.main-visual .scroll-cursor .scroll-down span {
+  position: absolute;
+  left: -2rem;
+  top: 1.8rem;
+  color: #000;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  writing-mode: vertical-rl;
+}
+.main-visual .scroll-cursor .scroll-down::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 7rem;
+  background-color: #000;
+}
+.main-visual .scroll-cursor .scroll-down .scroll-arrow-circle {
+  position: absolute;
+  top: 7rem;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-visual .scroll-cursor .scroll-down .scroll-arrow-circle .scroll-arrow-triangle {
+  height: 50%;
+  width: 50%;
+  background-color: #fff;
+  -webkit-clip-path: polygon(0 10%, 100% 10%, 50% 100%);
+          clip-path: polygon(0 10%, 100% 10%, 50% 100%);
+}
+.main-visual .main-pic {
+  width: 90%;
+  margin-bottom: 100px;
+}
+.main-visual .main-pic img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* ==============================
+	section2 school name
+===============================*/
+.school {
+  margin-bottom: 100px;
+}
+.school .logo-box {
+  width: 35%;
+  margin: 0 auto;
+}
+.school .logo-box .school-logo {
+  width: 100%;
+}
+.school .school-name-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  padding: 18px 0;
+}
+.school .school-name-wrapper .school-name {
+  margin-top: 15px;
+  width: 90%;
+}
+
+/* ==============================
+	section3  ideal-life
+===============================*/
+.ideal-life .ideal-block .ideal-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.ideal-life .ideal-block .ideal-wrapper .bg-rectangle, .ideal-life .ideal-block .ideal-wrapper .bg-rectangle2 {
+  width: 90%;
+  height: 60rem;
+  right: 0;
+  top: 60rem;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal .ideal-img {
+  width: 80%;
+  height: auto;
+  margin-bottom: 12px;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal .ideal-desc {
+  display: inline-block;
+  font-size: clamp(16px, 1.6rem, 1.8rem);
+  line-height: 2.5rem;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position1 .ideal-desc, .ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position3 .ideal-desc, .ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position5 .ideal-desc {
+  margin-right: auto;
+  margin-left: 15px;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position2 .ideal-img, .ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position4 .ideal-img, .ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position6 .ideal-img {
+  margin-left: auto;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position2 .ideal-desc, .ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position4 .ideal-desc, .ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position6 .ideal-desc {
+  margin-left: auto;
+  margin-right: 15px;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position1 .ideal-img {
+  width: 90%;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position2 .ideal-img {
+  width: 75%;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position3 .ideal-img {
+  width: 85%;
+  margin-left: 3%;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position4 .ideal-img {
+  width: 92%;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position5 .ideal-img {
+  width: 78%;
+}
+.ideal-life .ideal-block .ideal-wrapper .ideal.ideal-position6 .ideal-img {
+  width: 85%;
+  margin-right: 2%;
+}
+.ideal-life .ideal-block .block-title h3 span {
+  display: inline-block;
+  width: 35rem;
+  transform: translateY(1rem);
+}
+.ideal-life .ideal-block .block-title h3 span img {
+  width: 100%;
+  height: 100%;
+}
+.ideal-life .ideal-block .belt {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 50px 0;
+  line-height: 3rem;
+  font-size: 2rem;
+}
+.ideal-life .claim {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/ideal-life-comment-back.jpg);
+  background-size: cover;
+  background-position: -700px 0;
+}
+.ideal-life .claim .claim-box {
+  color: #fff;
+  font-size: 4.5rem;
+  text-align: center;
+  line-height: 12rem;
+  position: relative;
+  padding: 50px 0;
+}
+
+/* ==============================
+	section4 problems
+===============================*/
+.problems {
+  overflow: hidden;
+}
+.problems .section-title-wrapper {
+  margin-top: 80px;
+}
+.problems .section-title-wrapper .section-title .title {
+  font-size: 3.5rem;
+}
+.problems .title-container {
+  width: 100vw;
+  margin-right: auto;
+}
+.problems .title-container .problem-title-wrapper {
+  background-color: #000;
+  color: #fff;
+  width: 80%;
+  padding: 3rem 0.5rem 3rem 0;
+  font-size: 2rem;
+  margin-bottom: 50px;
+  position: relative;
+}
+.problems .title-container .problem-title-wrapper .problem-desc-wrapper {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.problems .title-container .problem-title-wrapper .problem-desc-wrapper .title-number {
+  color: #ccc;
+  display: inline-block;
+  margin-bottom: 0;
+}
+.problems .title-container .problem-title-wrapper.left-side {
+  transform: rotate(8deg);
+  left: -12px;
+}
+.problems .title-container .problem-title-wrapper.left-side .title-number {
+  transform: rotate(-8deg);
+  line-height: 1rem;
+}
+.problems .title-container .problem-title-wrapper.left-side .problem-title {
+  transform: rotate(-8deg);
+  margin-left: 2rem;
+}
+.problems .title-container .problem-title-wrapper.right-side {
+  margin-left: auto;
+  transform: rotate(-8deg);
+  right: -12px;
+}
+.problems .title-container .problem-title-wrapper.right-side .problem-desc-wrapper {
+  margin-left: 15%;
+}
+.problems .title-container .problem-title-wrapper.right-side .problem-desc-wrapper .title-number {
+  transform: rotate(8deg);
+  margin-bottom: 30px;
+}
+.problems .title-container .problem-title-wrapper.right-side .problem-desc-wrapper .problem-title {
+  transform: rotate(8deg);
+}
+.problems .ba-block-container .ba-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  margin-bottom: 5rem;
+  position: relative;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .ba-card {
+  text-align: center;
+  flex: 2;
+  position: relative;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .ba-card .ba-title {
+  font-size: clamp(18px, 1.8rem, 1.8rem);
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .ba-card .ba-img {
+  width: 100%;
+  border-radius: 50%;
+  margin: 15px 0;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .ba-card .ba-desc {
+  font-size: clamp(14px, 1.4rem, 1.4rem);
+  line-height: 2rem;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .ba-card .balloon {
+  position: absolute;
+  width: 12rem;
+  top: -3rem;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .ba-card .checked-problem {
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  font-size: 1.8rem;
+  color: red;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .arrow {
+  text-align: center;
+  padding-top: 12rem;
+  flex: 1;
+}
+.problems .ba-block-container .ba-wrapper .sp-balloon-container .improvement .arrow img {
+  width: 50%;
+}
+.problems .block-title {
+  margin-top: 10px;
+  margin-bottom: 6rem;
+}
+.problems .block-title.mini {
+  font-size: calc(clamp(18px, 1.8rem, 1.8rem) * 0.9);
+}
+.problems .pc-balloon-container {
+  display: none;
+}
+.problems .your-problem {
+  width: 65%;
+  padding-left: 5px;
+}
+
+/* ==============================
+	section5 solve problems
+===============================*/
+.solve {
+  overflow: hidden;
+}
+.solve .solve-title {
+  font-size: 2.6rem;
+  position: relative;
+}
+.solve .solve-title .section-title-wrapper {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: 10px;
+}
+.solve .solve-title .section-title-wrapper .section-title .section-title-desc {
+  color: #ccc;
+}
+.solve .solve-title .section-title-wrapper .section-title .title {
+  font-size: 3rem;
+  color: #fff;
+}
+.solve .solve-title .solve1 {
+  display: block;
+  width: 75%;
+  height: 5rem;
+  background-color: #000;
+}
+.solve .solve-title .solve-title-img {
+  width: 100%;
+  display: block;
+  transform: scale(1.1);
+}
+.solve .solve-title .solve2 {
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  height: 10rem;
+  background-color: #000;
+}
+.solve .reasons .reason {
+  width: 100%;
+}
+.solve .reasons .reason .flex {
+  margin: 60px 0 30px;
+  display: flex;
+  justify-content: flex-start;
+}
+.solve .reasons .reason .flex .number-box {
+  width: 40%;
+  background-color: #000;
+  margin-right: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.solve .reasons .reason .flex .number-box .reason-number {
+  color: #fff;
+  font-size: 8rem;
+}
+.solve .reasons .reason .flex .solve-title {
+  margin-top: auto;
+}
+.solve .reasons .reason .solve-box {
+  position: relative;
+  height: 70rem;
+  min-height: 700px;
+}
+.solve .reasons .reason .solve-box .solve-img {
+  position: absolute;
+  width: 90%;
+}
+.solve .reasons .reason .solve-box .solve-text-box {
+  position: absolute;
+  width: 90%;
+  padding: 20px;
+  background-color: #000;
+}
+.solve .reasons .reason .solve-box .solve-text-box .solve-desc {
+  color: #fff;
+  line-height: 2.5rem;
+}
+.solve .reasons .reason.left .solve-box .solve-img {
+  top: 0;
+  left: 0;
+}
+.solve .reasons .reason.left .solve-box .solve-text-box {
+  top: 20rem;
+  right: 0;
+}
+.solve .reasons .reason.right .flex {
+  flex-direction: row-reverse;
+}
+.solve .reasons .reason.right .flex .number-box {
+  margin-right: 0;
+  margin-left: 10px;
+}
+.solve .reasons .reason.right .solve-box .solve-img {
+  top: 0;
+  right: 0;
+}
+.solve .reasons .reason.right .solve-box .solve-text-box {
+  top: 20rem;
+  left: 0;
+}
+
+/* ==============================
+	section6  lesson
+===============================*/
+.lesson {
+  position: relative;
+}
+.lesson .bg-rectangle {
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+          clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+.lesson .section-title-wrapper .section-title .title {
+  font-size: 3.2rem;
+}
+.lesson .block-title {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+.lesson .lesson-step {
+  padding: 0 15px 5px;
+}
+.lesson .lesson-step .lesson-card {
+  margin-bottom: 50px;
+}
+.lesson .lesson-step .lesson-card .lesson-image img {
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+}
+.lesson .lesson-step .lesson-card .step-title {
+  font-size: clamp(20px, 2rem, 2rem);
+  margin: 15px 0 25px;
+}
+.lesson .lesson-step .lesson-card .step-desc {
+  line-height: 2.5rem;
+}
+
+/* ==============================
+	section7 contact
+===============================*/
+.contact {
+  overflow: hidden;
+}
+.contact .contact-title .section-title-wrapper {
+  background-color: #000;
+  color: #fff;
+  padding: 20px 15px;
+  margin-left: auto;
+  width: 80%;
+}
+.contact .contact-title .contact-box-container {
+  width: 100%;
+  overflow: hidden;
+  transform: scale(1.05);
+  background-image: url(../images/mail.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.contact .contact-title .contact-box-container .contact-box {
+  height: 30rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.contact .contact-title .contact-box-container .contact-box p {
+  font-size: clamp(16px, 1.6rem, 1.8rem);
+  line-height: 3rem;
+}
+.contact .contact-title .contact-box-container .contact-box .how-contact {
+  margin: 4rem 0;
+}
+.contact .contact-title .contact-box-container .contact-box .how-contact a img {
+  height: 6rem;
+}
+.contact .contact-title .contact-box-container .contact-box .how-contact .qr-code {
+  display: none;
+}
+.contact .contact-title .contact1 {
+  display: block;
+  width: 70%;
+  height: 60px;
+  background-color: #000;
+}
+
+/* ==============================
+	section8 about instructor
+===============================*/
+.about-instructor {
+  margin-top: 80px;
+  overflow: hidden;
+}
+.about-instructor .instructor {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  padding-bottom: 30px;
+}
+.about-instructor .instructor::after {
+  content: "";
+  width: 100%;
+  height: 70%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -10;
+  background-color: #eee;
+}
+.about-instructor .instructor .instructor-img {
+  width: 90%;
+  margin: 0 auto 20px;
+}
+.about-instructor .instructor .instructor-text-block {
+  font-weight: bold;
+}
+.about-instructor .instructor .instructor-text-block .instructor-name {
+  font-size: clamp(22px, 2.2rem, 2.2rem);
+  margin: 10px 0;
+}
+.about-instructor .instructor .instructor-text-block .instructor-career {
+  line-height: 3rem;
+  font-size: clamp(18px, 1.8rem, 1.8rem);
+}
+.about-instructor .instructor .instructor-text-block .instructor-career span {
+  display: block;
+}
+.about-instructor .past-work-wrapper {
+  position: relative;
+}
+.about-instructor .past-work-wrapper .bg-rectangle {
+  width: 90%;
+  height: 70rem;
+  left: 0;
+  top: 20rem;
+}
+.about-instructor .past-work-wrapper .past-work {
+  padding: 0 15px;
+}
+.about-instructor .past-work-wrapper .past-work .work {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+.about-instructor .past-work-wrapper .past-work .work .work-img {
+  width: 100%;
+}
+.about-instructor .past-work-wrapper .past-work .work .work-img img {
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+}
+.about-instructor .past-work-wrapper .past-work .work .work-text-block .work-title {
+  margin: 15px 0;
+  font-size: clamp(20px, 2rem, 2rem);
+}
+.about-instructor .past-work-wrapper .past-work .work .work-text-block .work-desc {
+  line-height: 2.5rem;
+}
+.about-instructor .past-work-wrapper .past-work .work .work-text-block .creation-btn-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+.about-instructor .past-work-wrapper .past-work .work .work-text-block .creation-btn-wrapper .each-creation-btn {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+.about-instructor .past-work-wrapper .past-work .work .work-text-block .creation-btn-wrapper .each-creation-btn > a {
+  padding: 5px 30px;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #000;
+  font-size: clamp(18px, 1.8rem, 1.8rem);
+  font-weight: 300;
+}
+.about-instructor .past-work-wrapper .past-work .work .work-text-block .creation-btn-wrapper .each-creation-btn > span {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 10px;
+  background-color: #000;
+  bottom: -2px;
+  right: -1px;
+  transform: rotate(45deg);
+}
+.about-instructor .from-graduate {
+  position: relative;
+  text-align: center;
+}
+.about-instructor .from-graduate .interview .bg-rectangle {
+  width: 85%;
+  height: 47rem;
+  left: 0;
+  top: 15rem;
+}
+.about-instructor .from-graduate .after-graduation .after-graduation-desc {
+  padding: 2rem 3rem;
+  line-height: 3rem;
+  text-align: left;
+  margin: 3rem 0;
+}
+.about-instructor .from-graduate .after-graduation .after-graduation-desc li {
+  list-style-position: inside;
+}
+.about-instructor .message {
+  background-color: #eee;
+  width: 90%;
+  margin-left: auto;
+  margin-bottom: 30px;
+  padding: 30px 20px;
+}
+.about-instructor .message .message-desc {
+  line-height: 2.5rem;
+  margin-bottom: 20px;
+}
+.about-instructor .message .message-desc:last-child {
+  margin-bottom: 0;
+}
+.about-instructor .instructor-title {
+  font-size: clamp(18px, 1.8rem, 1.8rem);
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+.about-instructor .movie-container {
+  width: 94%;
+  margin: 0 auto 5rem;
+}
+.about-instructor .movie-container video {
+  width: 100%;
+  height: auto;
+}
+
+/* ==============================
+	footer
+===============================*/
+.footer {
+  background-color: #000;
+  text-align: center;
+  padding: 10px 0 30px;
+}
+.footer .footer-logo {
+  width: 20%;
+  margin: 0 auto;
+}
+.footer .footer-desc {
+  color: #fff;
+}
+
+/* ==============================
+	PCサイト
+===============================*//*# sourceMappingURL=style.css.map */
